@@ -1,6 +1,8 @@
 import configparser
 
-path = '/home/myroslava/programs/my_second rep/Pytest/homework_17/configurations_1/configuration.ini'
+from homework_17.constants import ROOT_DIR
+
+path = f'{ROOT_DIR}/configurations/configuration.ini'
 config = configparser.RawConfigParser()
 config.read(path)
 
@@ -15,3 +17,6 @@ def get_user_creds():
 
 def get_browser_id():
     return config.get('browser_data', 'browser_id')
+
+def get_search_data():
+    return config.get('search_data', 'search_word')
