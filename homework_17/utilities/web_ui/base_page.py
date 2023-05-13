@@ -28,3 +28,7 @@ class BasePage:
     def _get_text(self, locator):
         element = self._wait_until_element_located(locator)
         return element.text
+
+    def _wait_until_elements_are_located(self, locator):
+        return self.__wait.until(EC.presence_of_all_elements_located(locator))
+

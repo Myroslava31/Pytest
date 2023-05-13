@@ -18,7 +18,13 @@ def open_main_page(create_browser):
     return MainPage(create_browser)
 @pytest.fixture()
 def open_login_page(open_main_page):
-    return LoginPage(open_main_page)
+    main_page = open_main_page
+    return main_page.click_my_cabinet_button()
+
+@pytest.fixture()
+def open_catalog_page(open_main_page):
+    main_page = open_main_page
+    return main_page.click_all_board_games_button()
 
 @pytest.fixture()
 def open_user_profile_page(open_login_page):

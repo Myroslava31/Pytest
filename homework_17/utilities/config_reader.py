@@ -20,3 +20,6 @@ def get_browser_id():
 
 def get_search_data():
     return config.get('search_data', 'search_word')
+
+def get_prices():
+    return (config.get('prices_values', 'start_price'), config.get('prices_values', 'end_price'))
