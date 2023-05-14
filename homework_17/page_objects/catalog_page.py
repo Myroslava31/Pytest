@@ -10,7 +10,7 @@ class CatalogPage(BasePage):
     __catalog_header = (By.XPATH, "//h1")
     __min_price_input = (By.CSS_SELECTOR, "[name='price_min']")
     __max_price_input = (By.CSS_SELECTOR, "[name='price_max']")
-    __ok_button = (By.CSS_SELECTOR, "[value='ОК']")
+    __ok_button = (By.CSS_SELECTOR, "input#btn_price_submit")
     __filter_for_price = (By.XPATH, "//a[contains(text(), 'грн')]")
     __filter_for_two = (By.XPATH, "//*[@title= 'Скинути фільтр Для двох']")
     __filter_for_parties = (By.XPATH, "//*[@title= 'Скинути фільтр Для вечірок']")
@@ -36,16 +36,14 @@ class CatalogPage(BasePage):
         return self
 
     def get_price_filter_results(self):
-        filter_result = self._wait_until_element_located(self.__filter_for_price)
-        return filter_result.is_displayed()
+        return self._is_displayed(self.__filter_for_price)
+
 
     def get_filter_results(self):
-        filter_result = self._wait_until_element_located(self.__filter_for_two)
-        return filter_result.is_displayed()
+        return self._is_displayed(self.__filter_for_two)
 
     def get_second_filter_results(self):
-        filter_result = self._wait_until_element_located(self.__filter_for_parties)
-        return filter_result.is_displayed()
+        return self._is_displayed(self.__filter_for_parties)
 
     def remove_one_filter(self):
         self._click_via_js(self.__filter_for_two)
@@ -74,4 +72,4 @@ class CatalogPage(BasePage):
         return self
 
     def are_all_products_displayed(self):
-        return self._wait_until_elements_are_located(self.__all_products)
+        return self._wait_until_elements_are_visible(self.__all_products)

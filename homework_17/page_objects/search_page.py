@@ -28,5 +28,5 @@ class SearchPage(BasePage):
         return self._get_text(self.__carcassonne_header)
 
     def are_all_search_items_displayed(self):
-        return self._wait_until_elements_are_located(self.__carcassonne_found_items)
+        return self._wait_until_elements_are_visible(self.__carcassonne_found_items)
 

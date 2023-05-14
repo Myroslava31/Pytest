@@ -29,6 +29,12 @@ class BasePage:
         element = self._wait_until_element_located(locator)
         return element.text
 
-    def _wait_until_elements_are_located(self, locator):
-        return self.__wait.until(EC.presence_of_all_elements_located(locator))
+    def _wait_until_elements_are_visible(self, locator):
+        return self.__wait.until(EC.visibility_of_all_elements_located(locator))
+
+    def _is_displayed(self, locator):
+        return self._wait_until_element_located(locator).is_displayed
+
+    def _wait_until_element_visible(self, locator):
+        return self.__wait.until(EC.visibility_of_element_located(locator))
 

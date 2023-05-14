@@ -12,9 +12,9 @@ class LoginPage(BasePage):
     __login_button = (By.CSS_SELECTOR, "[class='input-button']")
     __login_panel = (By.CSS_SELECTOR, "div.login_set")
     __all_inputs = (By.CLASS_NAME, 'input-text')
-    __registration_button = (By.XPATH, "//*[text()='Реєстрація']")
+    __registration_button = (By.XPATH, "//*[@href='https://desktopgames.com.ua/ua/user/registration']")
     __submit_button = (By.XPATH, "//*[@name='submit']")
-    __refresh_password = (By.XPATH, "//*[text()='Відновити пароль']")
+    __refresh_password = (By.XPATH, "//*[@href='https://desktopgames.com.ua/ua/user/recoverpass']")
 
     def set_email(self, email: str):
         self._send_keys(locator=self.__email_input, value=email)
@@ -33,11 +33,10 @@ class LoginPage(BasePage):
         return UserProfilePage(self.driver)
 
     def is_login_panel_displayed(self):
-        login_panel_element = self._wait_until_element_located(self.__login_panel)
-        return login_panel_element.is_displayed()
+        return self._is_displayed(self.__login_panel)
 
     def are_all_inputs_displayed(self):
-        return self._wait_until_elements_are_located(self.__all_inputs)
+        return self._wait_until_elements_are_visible(self.__all_inputs)
 
     def go_to_registration(self):
         self._click_via_js(self.__registration_button)

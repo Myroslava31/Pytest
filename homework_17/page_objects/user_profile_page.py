@@ -9,18 +9,17 @@ class UserProfilePage(BasePage):
 
     __profile_panel = (By.CSS_SELECTOR, "#prof_navi")
     __password_text = (By.XPATH, "//*[@id='prof_cont']//legend")
-    __orders_button = (By.XPATH, "//*[text()= 'Замовлення']")
+    __orders_button = (By.XPATH, "//*[@href='https://desktopgames.com.ua/ua/user/orders']")
     __header_my_orders = (By.XPATH, "//h1")
     __wishlist_button = (By.XPATH, "//b[contains(text(), 'Cписок бажань')]")
     __header_wishlist = (By.XPATH, "//h1")
-    __waiting_list = (By.XPATH, "//*[text()= 'Лист очікування']")
+    __waiting_list = (By.XPATH, "//*[@href='https://desktopgames.com.ua/ua/user/waitlist']")
     __header_waiting_list = (By.XPATH, "//h1")
     __user_info_panels = (By.CLASS_NAME, 'prof')
 
 
     def is_profile_panel_displayed(self):
-        profile_panel_element = self._wait_until_element_located(self.__profile_panel)
-        return profile_panel_element.is_displayed()
+        return self._is_displayed(self.__profile_panel)
 
     def is_password_text_displayed(self):
         return self._get_text(self.__password_text)
@@ -29,23 +28,23 @@ class UserProfilePage(BasePage):
         self._click_via_js(self.__orders_button)
         return self
 
-    def are_my_orders_displayed(self):
+    def get_header_text_my_orders(self):
         return self._get_text(self.__header_my_orders)
 
     def click_on_wishlist_button(self):
         self._click_via_js(self.__wishlist_button)
         return self
 
-    def is_my_wishlist_displayed(self):
+    def get_header_text_wishlist(self):
         return self._get_text(self.__header_wishlist)
 
     def click_on_waiting_list_button(self):
         self._click_via_js(self.__waiting_list)
         return self
 
-    def is_my_waiting_list_displayed(self):
+    def get_header_text_waiting_list(self):
         return self._get_text(self.__header_waiting_list)
 
-    def are_user_info_panels_displayed(self):
-        return self._wait_until_elements_are_located(self.__user_info_panels)
+    def are_user_info_panels_visible(self):
+        return self._wait_until_elements_are_visible(self.__user_info_panels)
 
