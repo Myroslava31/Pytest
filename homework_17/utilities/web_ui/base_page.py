@@ -29,7 +29,7 @@ class BasePage:
         element = self._wait_until_element_located(locator)
         return element.text
 
-    def _wait_until_elements_are_visible(self, locator):
+    def _crate_list_of_visible_elements(self, locator):
         return self.__wait.until(EC.visibility_of_all_elements_located(locator))
 
     def _is_displayed(self, locator):

@@ -20,7 +20,7 @@ class CatalogPage(BasePage):
     __all_products = (By.CLASS_NAME, 'product')
 
 
-    def is_page_open(self):
+    def get_text_from_catalog_header(self):
         return self._get_text(self.__catalog_header)
 
     def set_start_price(self, price: int):
@@ -49,10 +49,10 @@ class CatalogPage(BasePage):
         self._click_via_js(self.__filter_for_two)
         return self
 
-    def are_search_prices_correct(self):
+    def get_text_at_prices_filter(self):
         return self._get_text(self.__filter_for_price)
 
-    def are_search_results_correct(self):
+    def get_text_at_for_two_filter(self):
         return self._get_text(self.__filter_for_two)
 
     def click_on_for_two(self):
@@ -71,5 +71,5 @@ class CatalogPage(BasePage):
         self._click_via_js(self.__filter_for_parties)
         return self
 
-    def are_all_products_displayed(self):
-        return self._wait_until_elements_are_visible(self.__all_products)
+    def get_list_of_visible_products(self):
+        return self._crate_list_of_visible_elements(self.__all_products)

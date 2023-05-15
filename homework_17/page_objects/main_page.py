@@ -19,10 +19,10 @@ class MainPage(BasePage):
     __top_menu = (By.XPATH, "//*[@class='head_cont_desk']")
 
     def is_my_cabinet_button_visible(self):
-        return self._wait_until_element_visible(self.__my_cabinet)
+        return self._is_displayed(self.__my_cabinet)
 
     def is_all_games_button_visible(self):
-        return self._wait_until_element_visible(self.__all_board_games_button)
+        return self._is_displayed(self.__all_board_games_button)
 
     def click_my_cabinet_button(self):
         self._click_via_js(self.__my_cabinet)
@@ -43,12 +43,12 @@ class MainPage(BasePage):
         self._click_via_js(self.__all_board_games_button)
         return CatalogPage(self.driver)
 
-    def are_main_page_items_displayed(self):
-        return self._wait_until_elements_are_visible(self.__main_page_items)
+    def get_list_of_main_page_items_displayed(self):
+        return self._crate_list_of_visible_elements(self.__main_page_items)
 
     def is_banner_visible(self):
         return self._wait_until_element_visible(self.__main_banner)
 
-    def is_top_menu_text_displayed(self):
+    def get_top_menu_text(self):
         return self._get_text(self.__top_menu)
 

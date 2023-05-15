@@ -30,5 +30,5 @@ def test_waiting_list(open_login_page):
 def test_user_info_panels(open_login_page):
     login_page = open_login_page
     profile_page = login_page.login(get_user_creds()[0], get_user_creds()[1])
-    elements = len(profile_page.are_user_info_panels_visible())
+    elements = len(profile_page.get_list_with_user_info_panels())
     assert elements == 2, 'There is not all items'

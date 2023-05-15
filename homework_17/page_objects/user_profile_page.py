@@ -21,7 +21,7 @@ class UserProfilePage(BasePage):
     def is_profile_panel_displayed(self):
         return self._is_displayed(self.__profile_panel)
 
-    def is_password_text_displayed(self):
+    def get_password_text(self):
         return self._get_text(self.__password_text)
 
     def click_on_orders_button(self):
@@ -45,6 +45,6 @@ class UserProfilePage(BasePage):
     def get_header_text_waiting_list(self):
         return self._get_text(self.__header_waiting_list)
 
-    def are_user_info_panels_visible(self):
-        return self._wait_until_elements_are_visible(self.__user_info_panels)
+    def get_list_with_user_info_panels(self):
+        return self._crate_list_of_visible_elements(self.__user_info_panels)
 

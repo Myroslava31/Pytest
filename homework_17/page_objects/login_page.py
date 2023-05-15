@@ -35,14 +35,14 @@ class LoginPage(BasePage):
     def is_login_panel_displayed(self):
         return self._is_displayed(self.__login_panel)
 
-    def are_all_inputs_displayed(self):
-        return self._wait_until_elements_are_visible(self.__all_inputs)
+    def get_list_of_visible_input_fields(self):
+        return self._crate_list_of_visible_elements(self.__all_inputs)
 
     def go_to_registration(self):
         self._click_via_js(self.__registration_button)
         return self
 
-    def check_if_registration_is_clickable(self):
+    def click_on_registration_button(self):
         self._click(self.__submit_button)
         return self
 
@@ -50,6 +50,6 @@ class LoginPage(BasePage):
         self._click_via_js(self.__refresh_password)
         return self
 
-    def check_if_refresh_password_is_clickable(self):
+    def click_on_refresh_password_button(self):
         self._click(self.__submit_button)
         return self

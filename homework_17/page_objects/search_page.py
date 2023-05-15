@@ -13,20 +13,19 @@ class SearchPage(BasePage):
     __carcassonne_found_items = (By.CLASS_NAME, 'product')
 
 
-    def are_search_results_displayed(self):
+    def get_text_after_search(self):
         return self._get_text(self.__search_word)
 
-    def is_search_complete(self):
-        catalog_elements = self._wait_until_element_located(self.__catalog)
-        return catalog_elements.is_displayed()
+    def is_catalog_displayed(self):
+        return self._is_displayed(self.__catalog)
 
     def click_on_game_button(self):
         self._click_via_js(self.__carcassonne_grundspiel_item)
         return self
 
-    def is_game_page_displayed(self):
+    def get_game_page_header_text(self):
         return self._get_text(self.__carcassonne_header)
 
-    def are_all_search_items_displayed(self):
-        return self._wait_until_elements_are_visible(self.__carcassonne_found_items)
+    def create_list_with_search_items_displayed(self):
+        return self._crate_list_of_visible_elements(self.__carcassonne_found_items)
 
