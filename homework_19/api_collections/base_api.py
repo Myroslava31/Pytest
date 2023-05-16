@@ -17,3 +17,9 @@ class BaseApi:
             headers = self.__headers
         response = self.__requests.post(f'{self.__base_url}{url}', data=body, headers=headers)
         return response
+
+    def put(self, url, body, headers=None):
+        if headers is None:
+            headers = self.__headers
+        response = self.__requests.put(f'{self.__base_url}{url}', data=body, headers=headers)
+        return response
